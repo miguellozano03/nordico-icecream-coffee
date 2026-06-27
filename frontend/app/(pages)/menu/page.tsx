@@ -19,14 +19,14 @@ export default async function MenuPage({
 }) {
   const { page, category } = await searchParams;
 
-  const currentPage = Number(page ?? 1);
+  // const currentPage = Number(page ?? 1);
   const filteredMenu = category
     ? FullMenu.filter((item) => item.category === category)
     : FullMenu;
 
   return (
     <section className="min-h-[calc(100dvh-4rem)] px-4 py-8 md:px-8 lg:px-12">
-      <h2 className="mb-8 text-3xl font-bold text-slate-800">Nuestro Menú</h2>
+      <h2 className="mb-8 text-3xl font-bold text-slate-800">Our Menu</h2>
 
       <form method="get" className="flex justify-end pb-10 gap-2">
         <NativeSelect name="category" defaultValue={category ?? ""}>
@@ -41,7 +41,7 @@ export default async function MenuPage({
           type="submit"
           className="inline-flex h-8 items-center rounded-lg bg-slate-800 px-3 text-sm font-medium text-white hover:bg-slate-900"
         >
-          Filtrar
+          Filter
         </button>
       </form>
 
