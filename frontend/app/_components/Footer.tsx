@@ -1,114 +1,100 @@
 "use client";
+
+import Link from "next/link";
 import { Send } from "lucide-react";
 
 export function Footer() {
   return (
-    // Cambiado a un fondo un poco más oscuro que el bg-slate-100 para dar profundidad, con texto base slate-600
-    <footer className="bg-slate-50 text-slate-600 pt-16 pb-8 px-6 border-t border-slate-200">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
-        {/* COLUMNA 1: Newsletter */}
+    <footer className="bg-stone-900 text-stone-300 pt-16 pb-8 px-6">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+        {/* Newsletter */}
         <div className="md:col-span-2 space-y-4">
-          {/* Título en slate-800 para buen contraste sobre fondo claro */}
-          <h3 className="text-slate-800 text-xl font-bold tracking-wide">
-            Lorem, ipsum.
+          <h3 className="text-2xl font-bold text-stone-100">
+            Join the Nordico Club
           </h3>
-          <p className="text-sm text-slate-500 max-w-sm">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae,
-            fugiat.
+
+          <p className="max-w-md text-sm text-stone-400">
+            Get seasonal flavors, exclusive offers and cozy fika inspiration
+            delivered straight to your inbox.
           </p>
+
           <form
             onSubmit={(e) => e.preventDefault()}
-            className="flex max-w-md gap-2 pt-2"
+            className="flex gap-2 max-w-md pt-2"
           >
-            {/* Input claro con borde definido */}
             <input
               type="email"
-              placeholder="Tu correo electrónico"
-              className="w-full bg-white text-slate-800 px-4 py-2.5 rounded-md focus:outline-none focus:ring-2 focus:ring-slate-400 border border-slate-300 text-sm transition-all placeholder:text-slate-400"
-              required
+              placeholder="Your email"
+              className="flex-1 rounded-md bg-stone-800 border border-stone-700 px-4 py-2.5 text-sm text-stone-100 placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-amber-600"
             />
-            {/* Botón oscuro tipo "Nordic Minimalist" que cambia suavemente al pasar el cursor */}
-            <button
-              type="submit"
-              className="bg-slate-900 hover:bg-slate-800 text-white font-medium px-5 py-2.5 rounded-md transition-colors flex items-center justify-center gap-2 cursor-pointer text-sm shadow-sm"
-            >
-              <span>Lorem.</span>
+
+            <button className="flex items-center gap-2 rounded-md bg-amber-700 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-amber-600 cursor-pointer">
+              Join
               <Send size={16} />
             </button>
           </form>
         </div>
 
-        {/* COLUMNA 2: Enlaces - Tienda */}
-        <div className="space-y-4">
-          <h4 className="text-slate-800 font-semibold text-base tracking-wider uppercase">
-            Lorem, ipsum.
+        {/* Explore */}
+        <div>
+          <h4 className="mb-4 font-semibold uppercase tracking-wider text-stone-100">
+            Explore
           </h4>
-          <ul className="space-y-2.5 text-sm">
+
+          <ul className="space-y-3 text-sm">
             <li>
-              <a href="#" className="hover:text-slate-900 transition-colors">
-                Lorem, ipsum.
-              </a>
+              <Link href="/" className="hover:text-amber-400 transition">
+                Home
+              </Link>
             </li>
+
             <li>
-              <a href="#" className="hover:text-slate-900 transition-colors">
-                Lorem, ipsum.
-              </a>
+              <Link href="/menu" className="hover:text-amber-400 transition">
+                Menu
+              </Link>
             </li>
+
             <li>
-              <a href="#" className="hover:text-slate-900 transition-colors">
-                Lorem, ipsum.
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-slate-900 transition-colors">
-                Lorem, ipsum.
-              </a>
+              <Link href="/about" className="hover:text-amber-400 transition">
+                About
+              </Link>
             </li>
           </ul>
         </div>
 
-        {/* COLUMNA 3: Enlaces - Soporte */}
-        <div className="space-y-4">
-          <h4 className="text-slate-800 font-semibold text-base tracking-wider uppercase">
-            Lorem, ipsum.
+        {/* Contact */}
+        <div>
+          <h4 className="mb-4 font-semibold uppercase tracking-wider text-stone-100">
+            Contact
           </h4>
-          <ul className="space-y-2.5 text-sm">
-            <li>
-              <a href="#" className="hover:text-slate-900 transition-colors">
-                Lorem, ipsum.
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-slate-900 transition-colors">
-                Lorem, ipsum.
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-slate-900 transition-colors">
-                Lorem, ipsum.
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:text-slate-900 transition-colors">
-                Lorem, ipsum.
-              </a>
-            </li>
+
+          <ul className="space-y-3 text-sm text-stone-400">
+            <li>123 Coffee Street</li>
+            <li>Stockholm, Sweden</li>
+            <li>+46 123 456 789</li>
+            <li>hello@nordico.com</li>
           </ul>
         </div>
       </div>
 
-      {/* Línea divisoria clara */}
-      <hr className="border-slate-200 my-10" />
+      <div className="my-10 border-t border-stone-800" />
 
-      {/* SECCIÓN INFERIOR: Copyright + Minitexto Lorem10 */}
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-400">
+      <div className="max-w-7xl mx-auto flex flex-col gap-3 md:flex-row md:justify-between md:items-center text-xs text-stone-500">
         <p>
-          &copy; {new Date().getFullYear()} Lorem ipsum dolor sit amet
-          consectetur.
+          © {new Date().getFullYear()} Nordico Coffee & Ice Cream. All rights
+          reserved.
         </p>
-        <p className="text-center md:text-right max-w-xs italic">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur,
-          perferendis!
+
+        <p>
+          Designed & developed by{" "}
+          <a
+            href="https://github.com/miguellozano03"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-stone-300 hover:text-amber-400 transition"
+          >
+            miguellozano03
+          </a>
         </p>
       </div>
     </footer>

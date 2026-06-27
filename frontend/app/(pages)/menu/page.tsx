@@ -1,42 +1,64 @@
-"use client";
-import { useState } from "react";
-import { Paginator } from "../_components/ui/Paginator";
+import { Metadata } from "next";
+import {
+  NativeSelect,
+  NativeSelectOption,
+} from "@/components/ui/native-select";
 
-function MenuItem() {
-  return (
-    <article className="flex gap-4 rounded-xl border p-3 md:block md:overflow-hidden md:p-0">
-      <div className="h-24 w-24 shrink-0 overflow-hidden roundeed-lg md:h-56 md:w-full md:rounded-none bg-amber-200">
-        <img src="" alt="" />
-      </div>
-      {/* Info */}
-      <div className="flex flex-1 flex-col justify-between md:p-4">
-        <div>
-          <h3 className="font-semibold">Cafe latte</h3>
-          <p className="text-sm">Expresso con leche vaporizada</p>
-        </div>
-        <p className="mt-2 font-bold text-amber-600">price</p>
-      </div>
-    </article>
-  );
-}
+import { FullMenu, MenuCategories } from "@/data/restaurantMenu";
+import { MenuItem } from "@/app/_components/MenuItem";
 
-export default function MenuPage() {
-  const [page, setPage] = useState(1);
+export const metadata: Metadata = {
+  title: "Nordico - Menu",
+  description: "Check out our menu ",
+};
+
+export default async function MenuPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string; category?: string }>;
+}) {
+  const { page, category } = await searchParams;
+
+  const currentPage = Number(page ?? 1);
+  const filteredMenu = category
+    ? FullMenu.filter((item) => item.category === category)
+    : FullMenu;
+
   return (
     <section className="min-h-[calc(100dvh-4rem)] px-4 py-8 md:px-8 lg:px-12">
       <h2 className="mb-8 text-3xl font-bold text-slate-800">Nuestro Menú</h2>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <MenuItem />
-        <MenuItem />
-        <MenuItem />
-        <MenuItem />
-        <MenuItem />
-        <MenuItem />
+      <form method="get" className="flex justify-end pb-10 gap-2">
+        <NativeSelect name="category" defaultValue={category ?? ""}>
+          <NativeSelectOption value="">All Categories</NativeSelectOption>
+          {Object.entries(MenuCategories).map(([key, label]) => (
+            <NativeSelectOption key={key} value={label}>
+              {label}
+            </NativeSelectOption>
+          ))}
+        </NativeSelect>
+        <button
+          type="submit"
+          className="inline-flex h-8 items-center rounded-lg bg-slate-800 px-3 text-sm font-medium text-white hover:bg-slate-900"
+        >
+          Filtrar
+        </button>
+      </form>
+
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        {filteredMenu.map((item) => (
+          <MenuItem
+            key={item.title}
+            title={item.title}
+            description={item.description}
+            image={item.image}
+            price={item.price}
+          />
+        ))}
       </div>
 
       <div className="mt-8">
-        <Paginator currentPage={page} totalPages={5} onPageChange={setPage} />
+        {/* <Paginator currentPage={currentPage} totalPages={5} /> */}
       </div>
     </section>
   );

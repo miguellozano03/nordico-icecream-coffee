@@ -1,7 +1,9 @@
+"use client";
+
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
@@ -11,14 +13,20 @@ import {
 type PaginatorProps = {
   currentPage: number;
   totalPages: number;
-  onPageChange: (page: number) => void;
 };
 
-export function Paginator({
-  currentPage,
-  totalPages,
-  onPageChange,
-}: PaginatorProps) {
+export function Paginator({ currentPage, totalPages }: PaginatorProps) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const changePage = (page: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("page", page.toString());
+
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
   return (
     <Pagination>
       <PaginationContent>
@@ -28,7 +36,7 @@ export function Paginator({
             onClick={(e) => {
               e.preventDefault();
               if (currentPage > 1) {
-                onPageChange(currentPage - 1);
+                changePage(currentPage - 1);
               }
             }}
           />
@@ -41,7 +49,7 @@ export function Paginator({
               isActive={currentPage === i + 1}
               onClick={(e) => {
                 e.preventDefault();
-                onPageChange(i + 1);
+                changePage(i + 1);
               }}
             >
               {i + 1}
@@ -55,7 +63,7 @@ export function Paginator({
             onClick={(e) => {
               e.preventDefault();
               if (currentPage < totalPages) {
-                onPageChange(currentPage + 1);
+                changePage(currentPage + 1);
               }
             }}
           />
