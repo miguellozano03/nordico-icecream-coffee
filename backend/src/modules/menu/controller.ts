@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from "express";
 import { ImageService } from "../../services/image.service";
 import { CategoryService, ProductService } from "./service";
-import { ProductUpdate, CategoryUpdate } from "./types";
+import { ProductUpdate, CategoryUpdate, productQuerySchema } from "./types";
+
+type ProductQuery = z.infer<typeof productQuerySchema>;
 
 export class CategoryController {
   constructor(private readonly service: CategoryService) {}
@@ -61,11 +63,15 @@ export class ProductController {
     private readonly imageService: ImageService,
   ) {}
 
-  public getAll = async (req: Request, res: Response, next: NextFunction) => {
+  public getAll = async (
+    req: Request<{}, {}, {}, ProductQuery>,
+    res: Response,
+    next: NextFunction,
+  ) => {
     try {
       const products = await this.service.getALL({
-        page: Number(req.query.page),
-        limit: Number(req.query.limit),
+        page: req.query.page ? Number(req.query.page) : 1,
+        limit: req.query.limit ? Number(req.query.limit) : 10,
         search: req.query.search as string,
         categoryId: req.query.categoryId as string,
         sortBy: req.query.sortBy as "price" | "title",

@@ -45,6 +45,15 @@ export const productCreateSchema = z.object({
   price: z.coerce.number().positive(),
 });
 
+export const productQuerySchema = z.object({
+  page: z.coerce.number().int().positive().default(1),
+  limit: z.coerce.number().int().positive().max(100).default(10),
+  search: z.string().optional(),
+  categoryId: z.string().optional(),
+  sortBy: z.enum(["price", "title"]).optional(),
+  orderBy: z.enum(["asc", "desc"]).optional(),
+});
+
 export const productCreatePayloadSchema = productCreateSchema.extend({
   image: z.string().nullable().optional(),
 });

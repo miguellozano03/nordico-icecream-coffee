@@ -3,11 +3,13 @@ import { prisma } from "../../config/prisma";
 import { ImageService } from "../../services/image.service";
 import { validate } from "../../middlewares/validate";
 import { upload } from "../../middlewares/upload.middleware";
+import { requireAuth } from "../../middlewares/auth.middleware";
 import { CategoryService, ProductService } from "./service";
 import { CategoryController, ProductController } from "./controller";
 import {
   idParamSchema,
   categoryCreateSchema,
+  productQuerySchema,
   categoryUpdateSchema,
   productCreateSchema,
   productUpdateSchema,
@@ -25,36 +27,46 @@ const productController = new ProductController(
 router.get("/categories", categoryController.getAll);
 router.post(
   "/categories",
+  requireAuth,
   validate({ body: categoryCreateSchema }),
   categoryController.create,
 );
 router.patch(
   "/categories/:id",
+  requireAuth,
   validate({ params: idParamSchema, body: categoryUpdateSchema }),
   categoryController.update,
 );
 router.delete(
   "/categories/:id",
+  requireAuth,
   validate({ params: idParamSchema }),
   categoryController.delete,
 );
 
 // Product controller
 
-router.get("/products", productController.getAll);
+router.get(
+  "/products",
+  validate({ query: productQuerySchema }),
+  productController.getAll,
+);
 router.post(
   "/products",
+  requireAuth,
   validate({ body: productCreateSchema }),
   upload.single("image"),
   productController.create,
 );
 router.patch(
   "/products/:id",
+  requireAuth,
   validate({ params: idParamSchema, body: productUpdateSchema }),
   productController.update,
 );
 router.patch(
   "/products/:id",
+  requireAuth,
   validate({ params: idParamSchema }),
   productController.delete,
 );

@@ -33,7 +33,7 @@ export function validate<
       }
 
       if (schemas.query) {
-        req.query = schemas.query.parse(req.query);
+        schemas.query.parse(req.query);
       }
 
       next();
