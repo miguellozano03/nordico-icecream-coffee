@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { ImageService } from "../../services/image.service";
+import { ImageService } from "@/services/image.service";
 import { CategoryService, ProductService } from "./service";
 import { ProductUpdate, CategoryUpdate, productQuerySchema } from "./types";
 

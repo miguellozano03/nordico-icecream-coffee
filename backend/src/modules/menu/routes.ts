@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { prisma } from "../../config/prisma";
-import { ImageService } from "../../services/image.service";
-import { validate } from "../../middlewares/validate";
-import { upload } from "../../middlewares/upload.middleware";
-import { requireAuth } from "../../middlewares/auth.middleware";
+import { prisma } from "@/config/prisma";
+import { ImageService } from "@/services/image.service";
+import { validate } from "@/middlewares/validate";
+import { upload } from "@/middlewares/upload.middleware";
+import { requireAuth } from "@/middlewares/auth.middleware";
 import { CategoryService, ProductService } from "./service";
 import { CategoryController, ProductController } from "./controller";
 import {

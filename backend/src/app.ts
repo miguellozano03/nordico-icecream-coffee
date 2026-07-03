@@ -8,9 +8,9 @@ const app = express();
 
 app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
-// app.post("/api/v1/auth/sign-up/email", (req, res) => {
-//   res.sendStatus(404);
-// });
+app.post("/api/v1/auth/sign-up/email", (req, res) => {
+  res.sendStatus(404);
+});
 
 app.all("/api/v1/auth/{*any}", toNodeHandler(auth));
 

@@ -1,5 +1,5 @@
-import { PrismaClient, Prisma } from "../../generated/prisma/client";
-import { Category, Product } from "../../generated/prisma/client";
+import { PrismaClient, Prisma } from "@/generated/prisma/client";
+import { Category } from "@/generated/prisma/client";
 import {
   CategoryCreate,
   CategoryUpdate,
