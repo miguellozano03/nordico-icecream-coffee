@@ -54,17 +54,18 @@ router.get(
 router.post(
   "/products",
   requireAuth,
-  validate({ body: productCreateSchema }),
   upload.single("image"),
+  validate({ body: productCreateSchema }),
   productController.create,
 );
 router.patch(
   "/products/:id",
   requireAuth,
+  upload.single("image"),
   validate({ params: idParamSchema, body: productUpdateSchema }),
   productController.update,
 );
-router.patch(
+router.delete(
   "/products/:id",
   requireAuth,
   validate({ params: idParamSchema }),

@@ -116,6 +116,10 @@ export class ProductService {
     };
   }
 
+  public async getById(id: string) {
+    return await this.prisma.product.findUnique({ where: { id } });
+  }
+
   public async create(payload: ProductCreate) {
     const created = await this.prisma.product.create({ data: payload });
     return created;

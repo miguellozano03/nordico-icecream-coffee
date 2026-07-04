@@ -40,8 +40,8 @@ export class ImageService {
     oldImage: string,
     file: Express.Multer.File,
   ): Promise<string> {
+    const newImage = this.upload(file);
     await this.delete(oldImage);
-
-    return this.upload(file);
+    return newImage;
   }
 }

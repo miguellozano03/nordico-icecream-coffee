@@ -8,20 +8,25 @@ export const idParamSchema = z.object({
 
 // Users
 
-export const userCreateSchema = z.object({
+export const signUpSchema = z.object({
   email: z.email(),
   name: z.string(),
-  lastname: z.string(),
+  password: z.string(),
+  callbackURL: z.url().optional(),
+  image: z.url().optional(),
+  rememberMe: z.boolean().optional(),
 });
 
-export const userUpdateSchema = z.object({
-  email: z.email().optional(),
-  name: z.string().optional(),
-  lastname: z.string().optional(),
+export const signInSchema = z.object({
+  email: z.email(),
+  password: z.string(),
+  callbackURL: z.string(),
+  rememberMe: z.boolean(),
 });
 
-export type UserCreate = z.infer<typeof userCreateSchema>;
-export type UserUpdate = z.infer<typeof userUpdateSchema>;
+export const revokeSessionSchema = z.object({
+  token: z.string(),
+});
 
 // Category
 
@@ -64,3 +69,4 @@ export const productUpdateSchema = productCreateSchema.partial().extend({
 
 export type ProductCreate = z.infer<typeof productCreatePayloadSchema>;
 export type ProductUpdate = z.infer<typeof productUpdateSchema>;
+export type ProductQuery = z.infer<typeof productQuerySchema>;

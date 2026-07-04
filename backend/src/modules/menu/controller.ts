@@ -1,9 +1,8 @@
+import * as z from "zod";
 import { Request, Response, NextFunction } from "express";
 import { ImageService } from "@/services/image.service";
 import { CategoryService, ProductService } from "./service";
-import { ProductUpdate, CategoryUpdate, productQuerySchema } from "./types";
-
-type ProductQuery = z.infer<typeof productQuerySchema>;
+import { ProductUpdate, CategoryUpdate, ProductQuery } from "./types";
 
 export class CategoryController {
   constructor(private readonly service: CategoryService) {}
@@ -106,7 +105,23 @@ export class ProductController {
     next: NextFunction,
   ) => {
     try {
-      const product = await this.service.update(req.body, req.params.id);
+      let image: string | undefined;
+
+      if (req.file) {
+        const existingProduct = await this.service.getById(req.params.id);
+
+        image = existingProduct?.image
+          ? await this.imageService.replace(existingProduct.image, req.file)
+          : await this.imageService.upload(req.file);
+      }
+
+      const product = await this.service.update(
+        {
+          ...req.body,
+          ...(image !== undefined && { image }),
+        },
+        req.params.id,
+      );
 
       res.json(product);
     } catch (error) {
