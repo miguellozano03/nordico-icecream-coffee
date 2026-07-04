@@ -1,0 +1,203 @@
+info:
+  name: List products
+  type: http
+  seq: 1
+  tags:
+    - Products
+
+http:
+  method: GET
+  url: "{{baseUrl}}/products"
+  params:
+    - name: page
+      value: "1"
+      type: query
+    - name: limit
+      value: "10"
+      type: query
+    - name: search
+      value: ""
+      type: query
+      disabled: true
+    - name: categoryId
+      value: ""
+      type: query
+      disabled: true
+    - name: sortBy
+      value: price
+      type: query
+      disabled: true
+    - name: sortBy
+      value: title
+      type: query
+      disabled: true
+    - name: orderBy
+      value: asc
+      type: query
+      disabled: true
+    - name: orderBy
+      value: desc
+      type: query
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Products retrieved successfully.
+    request:
+      url: "{{baseUrl}}/products"
+      method: GET
+      params:
+        - name: page
+          value: "1"
+          type: query
+        - name: limit
+          value: "10"
+          type: query
+        - name: search
+          value: ""
+          type: query
+          disabled: true
+        - name: categoryId
+          value: ""
+          type: query
+          disabled: true
+        - name: sortBy
+          value: price
+          type: query
+          disabled: true
+        - name: sortBy
+          value: title
+          type: query
+          disabled: true
+        - name: orderBy
+          value: asc
+          type: query
+          disabled: true
+        - name: orderBy
+          value: desc
+          type: query
+          disabled: true
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "data": [
+              {
+                "id": "",
+                "categoryId": "",
+                "title": "",
+                "description": "",
+                "price": 0,
+                "image": "",
+                "category": {
+                  "id": "",
+                  "name": ""
+                }
+              }
+            ],
+            "pagination": {
+              "total": 0,
+              "page": 0,
+              "limit": 0,
+              "totalPages": 0
+            }
+          }
+  - name: 400 Response
+    description: Request query parameters are invalid.
+    request:
+      url: "{{baseUrl}}/products"
+      method: GET
+      params:
+        - name: page
+          value: "1"
+          type: query
+        - name: limit
+          value: "10"
+          type: query
+        - name: search
+          value: ""
+          type: query
+          disabled: true
+        - name: categoryId
+          value: ""
+          type: query
+          disabled: true
+        - name: sortBy
+          value: price
+          type: query
+          disabled: true
+        - name: sortBy
+          value: title
+          type: query
+          disabled: true
+        - name: orderBy
+          value: asc
+          type: query
+          disabled: true
+        - name: orderBy
+          value: desc
+          type: query
+          disabled: true
+    response:
+      status: 400
+      statusText: Bad Request
+      body:
+        type: text
+        data: ""
+  - name: 500 Response
+    description: Internal server error.
+    request:
+      url: "{{baseUrl}}/products"
+      method: GET
+      params:
+        - name: page
+          value: "1"
+          type: query
+        - name: limit
+          value: "10"
+          type: query
+        - name: search
+          value: ""
+          type: query
+          disabled: true
+        - name: categoryId
+          value: ""
+          type: query
+          disabled: true
+        - name: sortBy
+          value: price
+          type: query
+          disabled: true
+        - name: sortBy
+          value: title
+          type: query
+          disabled: true
+        - name: orderBy
+          value: asc
+          type: query
+          disabled: true
+        - name: orderBy
+          value: desc
+          type: query
+          disabled: true
+    response:
+      status: 500
+      statusText: Internal Server Error
+      body:
+        type: text
+        data: ""
+
+docs: Returns products with optional filtering, search, and pagination.

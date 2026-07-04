@@ -1,0 +1,145 @@
+info:
+  name: Update a category
+  type: http
+  seq: 3
+  tags:
+    - Categories
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/categories/:id"
+  params:
+    - name: id
+      value: 60f2ce4c-6f31-498f-973c-9ce1aff647df
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Ice creams"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Category updated successfully.
+    request:
+      url: "{{baseUrl}}/categories/:id"
+      method: PATCH
+      params:
+        - name: id
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "name": ""
+          }
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "id": "",
+            "name": ""
+          }
+  - name: 400 Response
+    description: Request payload is missing or invalid.
+    request:
+      url: "{{baseUrl}}/categories/:id"
+      method: PATCH
+      params:
+        - name: id
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "name": ""
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      body:
+        type: text
+        data: ""
+  - name: 401 Response
+    description: Unauthorized.
+    request:
+      url: "{{baseUrl}}/categories/:id"
+      method: PATCH
+      params:
+        - name: id
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "name": ""
+          }
+    response:
+      status: 401
+      statusText: Unauthorized
+      body:
+        type: text
+        data: ""
+  - name: 404 Response
+    description: Category not found.
+    request:
+      url: "{{baseUrl}}/categories/:id"
+      method: PATCH
+      params:
+        - name: id
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "name": ""
+          }
+    response:
+      status: 404
+      statusText: Not Found
+      body:
+        type: text
+        data: ""
+  - name: 500 Response
+    description: Internal server error.
+    request:
+      url: "{{baseUrl}}/categories/:id"
+      method: PATCH
+      params:
+        - name: id
+          value: ""
+          type: path
+      body:
+        type: json
+        data: |-
+          {
+            "name": ""
+          }
+    response:
+      status: 500
+      statusText: Internal Server Error
+      body:
+        type: text
+        data: ""
+
+docs: Updates an existing category by its identifier.
