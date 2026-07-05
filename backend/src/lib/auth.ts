@@ -1,5 +1,5 @@
 import { betterAuth } from "better-auth";
-import { openAPI } from "better-auth/plugins";
+import { openAPI, bearer } from "better-auth/plugins";
 import { prismaAdapter } from "better-auth/adapters/prisma";
 import { prisma } from "../config/prisma";
 import { config } from "../config/env";
@@ -18,5 +18,5 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
   },
-  plugins: [openAPI()],
+  plugins: [openAPI(), bearer()],
 });

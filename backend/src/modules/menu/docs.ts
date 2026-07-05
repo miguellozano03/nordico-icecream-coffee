@@ -182,7 +182,7 @@ registry.registerPath({
   method: "post",
   path: "/categories",
   tags: ["Categories"],
-  summary: "Create a category",
+  summary: "Create category",
   description: "Creates a new product category.",
   security: [{ bearerAuth: [] }],
   request: {
@@ -220,7 +220,7 @@ registry.registerPath({
   method: "patch",
   path: "/categories/{id}",
   tags: ["Categories"],
-  summary: "Update a category",
+  summary: "Update category",
   description: "Updates an existing category by its identifier.",
   security: [{ bearerAuth: [] }],
   request: {
@@ -262,7 +262,7 @@ registry.registerPath({
   method: "delete",
   path: "/categories/{id}",
   tags: ["Categories"],
-  summary: "Delete a category",
+  summary: "Delete category",
   description: "Deletes a category by its identifier.",
   security: [{ bearerAuth: [] }],
   request: {
@@ -315,7 +315,7 @@ registry.registerPath({
   method: "post",
   path: "/products",
   tags: ["Products"],
-  summary: "Create a product",
+  summary: "Create product",
   description: "Creates a new product and optionally uploads an image.",
   security: [{ bearerAuth: [] }],
   request: {
@@ -353,7 +353,7 @@ registry.registerPath({
   method: "patch",
   path: "/products/{id}",
   tags: ["Products"],
-  summary: "Update a product",
+  summary: "Update product",
   description: "Updates an existing product by its identifier.",
   security: [{ bearerAuth: [] }],
   request: {
@@ -395,7 +395,7 @@ registry.registerPath({
   method: "delete",
   path: "/products/{id}",
   tags: ["Products"],
-  summary: "Delete a product",
+  summary: "Delete product",
   description: "Deletes a product by its identifier.",
   security: [{ bearerAuth: [] }],
   request: {

@@ -1,7 +1,6 @@
-import 'dotenv/config'
+import "dotenv/config";
 
 class Config {
-
   readonly PORT = Number(process.env.PORT) || 8000;
 
   readonly DATABASE_URL = process.env.DATABASE_URL!;

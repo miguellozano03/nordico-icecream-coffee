@@ -13,7 +13,7 @@ export async function requireAuth(
     });
 
     if (!session) {
-      return res.status(404).json({ error: "Unauthorized" });
+      return res.status(401).json({ error: "Unauthorized" });
     }
 
     next();

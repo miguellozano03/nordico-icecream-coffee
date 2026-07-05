@@ -1,6 +1,8 @@
-import app from "./app.js";
+import { createApp } from "./app.js";
 import { config } from "./config/env.js";
+
+const app = createApp();
 
 app.listen(config.PORT, () => {
   console.log(`Running app on http://localhost:${config.PORT}`);
-})
+});
