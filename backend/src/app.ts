@@ -1,11 +1,13 @@
 import express, { type Express } from "express";
 import path from "path";
+import pinoHttp from "pino-http";
 import { toNodeHandler } from "better-auth/node";
 import { errorHandler } from "./middlewares/errorHandler.middleware";
 import { openApiDocument } from "@/docs/openapi";
 import { apiReference } from "@scalar/express-api-reference";
 import { router } from "./modules/menu/routes";
 import { auth as defaultAuth } from "./lib/auth";
+import { logger } from "./config/logger";
 
 type CreateAppOptions = {
   auth?: typeof defaultAuth;
@@ -16,6 +18,22 @@ export function createApp(options: CreateAppOptions = {}): Express {
   const { auth = defaultAuth, enableDocs = true } = options;
 
   const app = express();
+
+  app.use(
+    pinoHttp({
+      logger,
+      quietReqLogger: true,
+      quietResLogger: true,
+      serializers: {
+        req: () => undefined,
+        res: () => undefined,
+      },
+      customSuccessMessage(req, res) {
+        return `${req.method} ${req.url} ${res.statusCode}`;
+      },
+    }),
+  );
+
   if (enableDocs) {
     app.use(
       "/api/v1/docs",
