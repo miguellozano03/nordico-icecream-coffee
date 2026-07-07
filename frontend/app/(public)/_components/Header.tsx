@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const NavBarLinks = ({ onClose }: { onClose?: () => void }) => {
   const linkClass =

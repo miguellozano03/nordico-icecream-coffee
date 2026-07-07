@@ -5,7 +5,7 @@ import {
 } from "@/components/ui/native-select";
 
 import { FullMenu, MenuCategories } from "@/data/restaurantMenu";
-import { MenuItem } from "@/app/_components/MenuItem";
+import { MenuItem } from "@/app/(public)/_components/ui/MenuItem";
 
 export const metadata: Metadata = {
   title: "Nordico - Menu",

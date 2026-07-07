@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { MenuItem } from "./_components/MenuItem";
+import { MenuItem } from "./_components/ui/MenuItem";
 
 export default function Home() {
   return (
