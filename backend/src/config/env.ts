@@ -24,6 +24,8 @@ class Config {
   readonly IS_PRODUCTION = this.NODE_ENV === "production";
 
   readonly LOG_LEVEL = requireEnv("LOG_LEVEL", "info");
+
+  readonly CORS_ORIGIN = requireEnv("CORS_ORIGIN", "http://localhost:3000");
 }
 
 export const config = new Config();

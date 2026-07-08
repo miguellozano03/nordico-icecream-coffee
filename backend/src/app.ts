@@ -1,5 +1,6 @@
 import express, { type Express } from "express";
 import path from "path";
+import cors from "cors";
 import pinoHttp from "pino-http";
 import { toNodeHandler } from "better-auth/node";
 import { errorHandler } from "./middlewares/errorHandler.middleware";
@@ -8,6 +9,7 @@ import { apiReference } from "@scalar/express-api-reference";
 import { router } from "./modules/menu/routes";
 import { auth as defaultAuth } from "./lib/auth";
 import { logger } from "./config/logger";
+import { config } from "./config/env";
 
 type CreateAppOptions = {
   auth?: typeof defaultAuth;
@@ -18,6 +20,8 @@ export function createApp(options: CreateAppOptions = {}): Express {
   const { auth = defaultAuth, enableDocs = true } = options;
 
   const app = express();
+
+  app.use(cors({ origin: config.CORS_ORIGIN, credentials: true }));
 
   app.use(
     pinoHttp({
