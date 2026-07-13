@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { authClient } from "@/lib/auth-client";
+import AdminSidebar from "./_components/admin-sidebar";
 
 export default function AdminLayout({
   children,
@@ -26,7 +27,12 @@ export default function AdminLayout({
     );
   }
 
-  if (!session) return null; // evita flash de contenido mientras redirige
+  if (!session) return null;
 
-  return <>{children}</>;
+  return (
+    <div className="flex gap-4 min-h-screen">
+      <AdminSidebar />
+      {children}
+    </div>
+  );
 }

@@ -1,0 +1,56 @@
+info:
+  name: Get Product
+  type: http
+  seq: 6
+  tags:
+    - Categories
+
+http:
+  method: GET
+  url: "{{baseUrl}}/products/:id"
+  params:
+    - name: id
+      value: 60814a6a-b287-43b0-9df3-4401a45b9835
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 200 Response
+    description: Categories retrieved successfully.
+    request:
+      url: "{{baseUrl}}/categories"
+      method: GET
+    response:
+      status: 200
+      statusText: OK
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          [
+            {
+              "id": "",
+              "name": ""
+            }
+          ]
+  - name: 500 Response
+    description: Internal server error.
+    request:
+      url: "{{baseUrl}}/categories"
+      method: GET
+    response:
+      status: 500
+      statusText: Internal Server Error
+      body:
+        type: text
+        data: ""
+
+docs: Returns all available menu categories sorted by name.

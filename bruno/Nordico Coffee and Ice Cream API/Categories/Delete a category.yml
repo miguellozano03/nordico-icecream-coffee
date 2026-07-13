@@ -10,7 +10,7 @@ http:
   url: "{{baseUrl}}/categories/:id"
   params:
     - name: id
-      value: 09624704-b770-4a48-a484-df5589197037
+      value: 60f2ce4c-6f31-498f-973c-9ce1aff647df
       type: path
   auth:
     type: bearer

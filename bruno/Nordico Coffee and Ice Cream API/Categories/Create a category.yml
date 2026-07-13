@@ -12,7 +12,7 @@ http:
     type: json
     data: |-
       {
-        "name": "Ice Cream"
+        "name": "Coffee"
       }
   auth:
     type: bearer

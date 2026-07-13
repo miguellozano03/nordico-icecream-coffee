@@ -25,6 +25,11 @@ const productController = new ProductController(
 // Category controller
 
 router.get("/categories", categoryController.getAll);
+router.get(
+  "/categories/:id",
+  validate({ params: idParamSchema }),
+  categoryController.getOne,
+);
 router.post(
   "/categories",
   requireAuth,
@@ -50,6 +55,11 @@ router.get(
   "/products",
   validate({ query: productQuerySchema }),
   productController.getAll,
+);
+router.get(
+  "/products/:id",
+  validate({ params: idParamSchema }),
+  productController.getOne,
 );
 router.post(
   "/products",

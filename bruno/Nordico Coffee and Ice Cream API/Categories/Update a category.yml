@@ -10,13 +10,13 @@ http:
   url: "{{baseUrl}}/categories/:id"
   params:
     - name: id
-      value: 60f2ce4c-6f31-498f-973c-9ce1aff647df
+      value: 6cce375d-befd-41a1-8886-b777d7dba692
       type: path
   body:
     type: json
     data: |-
       {
-        "name": "Ice creams"
+        "name": "Ice cream"
       }
   auth:
     type: bearer

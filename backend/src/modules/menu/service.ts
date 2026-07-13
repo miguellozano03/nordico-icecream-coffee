@@ -23,6 +23,16 @@ export class CategoryService {
     return categories;
   }
 
+  public async getOne(id: string): Promise<Category> {
+    const category = await this.prisma.category.findUniqueOrThrow({
+      where: {
+        id: id,
+      },
+    });
+
+    return category;
+  }
+
   public async create(payload: CategoryCreate): Promise<Category> {
     const created = await this.prisma.category.create({
       data: payload,
@@ -116,8 +126,8 @@ export class ProductService {
     };
   }
 
-  public async getById(id: string) {
-    return await this.prisma.product.findUnique({ where: { id } });
+  public async getOne(id: string) {
+    return await this.prisma.product.findUniqueOrThrow({ where: { id } });
   }
 
   public async create(payload: ProductCreate) {

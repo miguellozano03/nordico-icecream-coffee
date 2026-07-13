@@ -1,4 +1,3 @@
-import * as z from "zod";
 import { Request, Response, NextFunction } from "express";
 import { ImageService } from "@/services/image.service";
 import { CategoryService, ProductService } from "./service";
@@ -12,6 +11,15 @@ export class CategoryController {
       const categories = await this.service.getALL();
 
       res.json(categories);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  public getOne = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const category = await this.service.getOne(req.params.id as string);
+      return res.status(200).json(category);
     } catch (error) {
       next(error);
     }
@@ -33,9 +41,9 @@ export class CategoryController {
     next: NextFunction,
   ) => {
     try {
-      const product = await this.service.update(req.body, req.params.id);
+      const category = await this.service.update(req.body, req.params.id);
 
-      res.json(product);
+      res.json(category);
     } catch (error) {
       next(error);
     }
@@ -78,6 +86,15 @@ export class ProductController {
       });
 
       res.json(products);
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  public getOne = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const category = await this.service.getOne(req.params.id as string);
+      res.status(200).json(category);
     } catch (error) {
       next(error);
     }
