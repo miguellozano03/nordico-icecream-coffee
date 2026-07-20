@@ -1,9 +1,9 @@
 import json
 
-from ai.llms.base import BaseLLM
-from ai.llms.schemas import ChatMessage, LLMResponse
-from ai.prompts.load_prompts import RESTAURANT_SYSTEM
-from ai.tools.registry import ToolRegistry
+from app.ai.llms.base import BaseLLM
+from app.ai.llms.schemas import ChatMessage, LLMResponse
+from app.ai.prompts.load_prompts import RESTAURANT_SYSTEM
+from app.ai.tools.registry import ToolRegistry
 
 from .memory import AbstractMemory
 

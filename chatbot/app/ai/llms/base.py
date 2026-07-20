@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Sequence
 
-from ai.tools.base import BaseTool
+from app.ai.tools.base import BaseTool
 
 from .schemas import ChatMessage, LLMResponse
 

@@ -1,4 +1,4 @@
-from ai.llms.schemas import ChatMessage
+from app.ai.llms.schemas import ChatMessage
 
 from .base import AbstractMemory
 

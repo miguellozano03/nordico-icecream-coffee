@@ -1,8 +1,8 @@
 from typing import Any
 
-from ai.services.menu import BaseMenuService
-from ai.tools.base import BaseTool
-from ai.tools.schemas import ToolParameter
+from app.ai.services.menu import BaseMenuService
+from app.ai.tools.base import BaseTool
+from app.ai.tools.schemas import ToolParameter
 
 
 class GetProductsTool(BaseTool):

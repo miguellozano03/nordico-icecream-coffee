@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 
-from ai.tools.schemas import ToolCall
+from app.ai.tools.schemas import ToolCall
 
 
 @dataclass

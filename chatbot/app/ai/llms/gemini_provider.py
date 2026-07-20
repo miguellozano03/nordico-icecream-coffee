@@ -2,9 +2,9 @@ import asyncio
 import uuid
 from typing import Sequence
 
-from ai.tools.base import BaseTool
-from ai.tools.schemas import ToolCall
-from core.settings import settings
+from app.ai.tools.base import BaseTool
+from app.ai.tools.schemas import ToolCall
+from app.core.settings import settings
 from google import genai
 from google.genai import types
 

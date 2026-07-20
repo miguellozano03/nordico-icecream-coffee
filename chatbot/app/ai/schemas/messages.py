@@ -1,6 +1,4 @@
-from dataclasses import dataclass, field
-
-from tools.base import BaseTool
+from dataclasses import dataclass
 
 
 @dataclass(slots=True)

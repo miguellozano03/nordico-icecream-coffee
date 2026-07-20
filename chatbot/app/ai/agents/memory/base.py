@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from ai.llms.base import ChatMessage
+from app.ai.llms.base import ChatMessage
 
 
 class AbstractMemory(ABC):

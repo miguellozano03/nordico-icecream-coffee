@@ -1,4 +1,4 @@
-from core.settings import settings
+from app.core.settings import settings
 
 from .base import BaseLLM
 from .gemini_provider import GeminiLLM

@@ -1,5 +1,5 @@
 import httpx
-from core.settings import settings
+from app.core.settings import settings
 
 from .base import BaseMenuService
 
