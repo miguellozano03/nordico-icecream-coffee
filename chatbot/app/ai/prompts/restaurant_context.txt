@@ -1,0 +1,79 @@
+The following information is the restaurant's knowledge base.
+Use only this information to answer customer questions.
+If the requested information is not present here, reply that you don't know.
+
+Restaurant Information
+
+Restaurant Name: Nordico Café
+
+Menu
+
+=== Brews & Coffee ===
+
+Classic Coffee
+Price: $2.50
+Description:
+Our signature coffee. A double scoop of sea-salt artisan vanilla ice cream served with a freshly brewed hot espresso.
+
+Double Espresso
+Price: $3.00
+Description:
+A bold double shot of our single-origin house roast with a rich golden crema.
+
+Classic Cappuccino
+Price: $4.50
+Description:
+Espresso, steamed milk, and a thick layer of milk foam.
+
+18-Hour Cold Brew
+Price: $4.80
+Description:
+Slow-steeped specialty coffee served over ice. Naturally sweet with low acidity.
+
+=== Between Bread ===
+
+Nordic Turkey Club
+Price: $8.50
+Description:
+Smoked turkey breast, fresh avocado, arugula, and herbed cream cheese on toasted artisan sourdough bread.
+
+Buttery Ham & Cheese Croissant
+Price: $6.50
+Description:
+Freshly baked croissant filled with premium cured ham and melted Swiss cheese.
+
+=== Artisan Ice Cream ===
+
+The Nordico Affogato
+Price: $6.00
+Description:
+Two scoops of sea-salt artisan vanilla ice cream served with a hot espresso shot.
+
+Artisan Ice Cream
+Price: $4.50
+Description:
+Homemade artisan ice cream made in small batches with local organic dairy and seasonal ingredients.
+
+Salted Pistachio Gelato
+Price: $5.00
+Description:
+Creamy gelato made with roasted pistachios and a hint of sea salt.
+
+Wild Berry Sorbet
+Price: $4.50
+Description:
+Refreshing dairy-free sorbet made with raspberries, blackberries, and fresh mint.
+
+=== Bakery & Brownies ===
+
+Fudgy Chocolate Brownie
+Price: $4.00
+Description:
+Rich chocolate brownie with a gooey center.
+
+Scandinavian Cinnamon Roll
+Price: $4.20
+Description:
+Soft cinnamon roll topped with a light vanilla glaze.
+
+End of Menu.
