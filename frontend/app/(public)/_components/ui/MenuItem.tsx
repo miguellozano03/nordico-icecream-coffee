@@ -1,28 +1,29 @@
+import Image from "next/image";
+
 interface MenuItemProps {
   image?: string;
   title: string;
   description: string;
-  price?: string;
+  price: number;
 }
 
 export function MenuItem({ image, title, description, price }: MenuItemProps) {
   return (
-    <article className="flex gap-4 rounded-xl border border-stone-200 bg-stone-50 p-3 transition-shadow hover:shadow-md md:block md:overflow-hidden md:p-0">
-      <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-stone-200 md:h-56 md:w-full md:rounded-none">
-        <img src={image} alt={title} className="h-full w-full object-cover" />
+    <div className="rounded-xl border border-slate-200 overflow-hidden bg-white shadow-sm">
+      <div className="relative h-52 w-full bg-slate-100">
+        {image ? (
+          <Image src={image} alt={title} fill unoptimized className="object-cover" />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center text-slate-400 text-sm">
+            Sin imagen
+          </div>
+        )}
       </div>
-
-      <div className="flex flex-1 flex-col justify-between p-1 md:p-4">
-        <div>
-          <h3 className="text-stone-900 font-semibold md:text-lg">{title}</h3>
-
-          <p className="mt-1 text-sm leading-snug text-stone-600">
-            {description}
-          </p>
-        </div>
-
-        <p className="mt-4 text-lg font-bold text-stone-900">{price}</p>
+      <div className="p-4">
+        <h3 className="font-semibold text-slate-800">{title}</h3>
+        <p className="text-sm text-slate-500 mt-1">{description}</p>
+        <p className="mt-2 font-medium text-slate-800">${Number(price).toFixed(2)}</p>
       </div>
-    </article>
+    </div>
   );
 }

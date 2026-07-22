@@ -49,11 +49,7 @@ export class CategoryController {
     }
   };
 
-  public delete = async (
-    req: Request<{ id: string }>,
-    res: Response,
-    next: NextFunction,
-  ) => {
+  public delete = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
     try {
       await this.service.delete(req.params.id);
 
@@ -146,14 +142,13 @@ export class ProductController {
     }
   };
 
-  public delete = async (
-    req: Request<{ id: string }>,
-    res: Response,
-    next: NextFunction,
-  ) => {
+  public delete = async (req: Request<{ id: string }>, res: Response, next: NextFunction) => {
     try {
+      const product = await this.service.getOne(req.params.id);
       await this.service.delete(req.params.id);
-
+      if (product?.image) {
+        await this.imageService.delete(product.image);
+      }
       res.sendStatus(204);
     } catch (error) {
       next(error);

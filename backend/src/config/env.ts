@@ -26,6 +26,16 @@ class Config {
   readonly LOG_LEVEL = requireEnv("LOG_LEVEL", "info");
 
   readonly CORS_ORIGIN = requireEnv("CORS_ORIGIN", "http://localhost:3000");
+
+  readonly CLOUDINARY_CLOUD_NAME = this.IS_PRODUCTION
+    ? requireEnv("CLOUDINARY_CLOUD_NAME")
+    : (process.env.CLOUDINARY_CLOUD_NAME ?? "");
+  readonly CLOUDINARY_API_KEY = this.IS_PRODUCTION
+    ? requireEnv("CLOUDINARY_API_KEY")
+    : (process.env.CLOUDINARY_API_KEY ?? "");
+  readonly CLOUDINARY_API_SECRET = this.IS_PRODUCTION
+    ? requireEnv("CLOUDINARY_API_SECRET")
+    : (process.env.CLOUDINARY_API_SECRET ?? "");
 }
 
 export const config = new Config();

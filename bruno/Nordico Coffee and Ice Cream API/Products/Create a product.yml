@@ -13,21 +13,21 @@ http:
     data:
       - name: categoryId
         type: text
-        value: 60f2ce4c-6f31-498f-973c-9ce1aff647df
+        value: fabb2b06-5714-4ac0-afed-eda63cc28ca8
       - name: description
         type: text
         value: Our masterpiece. A double scoop of our signature sea-salt artisan vanilla ice cream, drowned in a freshly pulled shot of hot espresso.
       - name: price
         type: text
-        value: "6"
+        value: "2.50"
       - name: title
         type: text
-        value: The Nordico Affogato
+        value: Classic Coffee
       - name: image
         type: file
         value:
-          - C:\Workspace\Programming\side_project\nordico-icecream-coffee\frontend\public\affogato.webp
-        contentType: image/webp
+          - C:\Workspace\Programming\side_project\nordico-icecream-coffee\frontend\public\americano_coffee.jpg
+        contentType: image/jpeg
   auth:
     type: bearer
     token: "{{token}}"
