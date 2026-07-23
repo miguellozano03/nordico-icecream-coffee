@@ -121,7 +121,7 @@ export class ProductController {
       let image: string | undefined;
 
       if (req.file) {
-        const existingProduct = await this.service.getById(req.params.id);
+        const existingProduct = await this.service.getOne(req.params.id);
 
         image = existingProduct?.image
           ? await this.imageService.replace(existingProduct.image, req.file)
