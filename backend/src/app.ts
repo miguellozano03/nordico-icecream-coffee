@@ -50,6 +50,8 @@ export function createApp(options: CreateAppOptions = {}): Express {
 
   app.use("/uploads", express.static(path.join(process.cwd(), "uploads")));
 
+  app.all("/api/v1/auth/{*any}", toNodeHandler(auth));
+
   app.use(express.json());
 
   app.use("/api/v1", router);
