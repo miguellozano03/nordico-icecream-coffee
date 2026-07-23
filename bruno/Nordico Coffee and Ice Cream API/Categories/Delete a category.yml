@@ -1,0 +1,87 @@
+info:
+  name: Delete a category
+  type: http
+  seq: 4
+  tags:
+    - Categories
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/categories/:id"
+  params:
+    - name: id
+      value: 60f2ce4c-6f31-498f-973c-9ce1aff647df
+      type: path
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 204 Response
+    description: Category deleted successfully.
+    request:
+      url: "{{baseUrl}}/categories/:id"
+      method: DELETE
+      params:
+        - name: id
+          value: ""
+          type: path
+    response:
+      status: 204
+      statusText: No Content
+      body:
+        type: text
+        data: ""
+  - name: 401 Response
+    description: Unauthorized.
+    request:
+      url: "{{baseUrl}}/categories/:id"
+      method: DELETE
+      params:
+        - name: id
+          value: ""
+          type: path
+    response:
+      status: 401
+      statusText: Unauthorized
+      body:
+        type: text
+        data: ""
+  - name: 404 Response
+    description: Category not found.
+    request:
+      url: "{{baseUrl}}/categories/:id"
+      method: DELETE
+      params:
+        - name: id
+          value: ""
+          type: path
+    response:
+      status: 404
+      statusText: Not Found
+      body:
+        type: text
+        data: ""
+  - name: 500 Response
+    description: Internal server error.
+    request:
+      url: "{{baseUrl}}/categories/:id"
+      method: DELETE
+      params:
+        - name: id
+          value: ""
+          type: path
+    response:
+      status: 500
+      statusText: Internal Server Error
+      body:
+        type: text
+        data: ""
+
+docs: Deletes a category by its identifier.

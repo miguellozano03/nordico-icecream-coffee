@@ -1,0 +1,104 @@
+info:
+  name: Create a category
+  type: http
+  seq: 2
+  tags:
+    - Categories
+
+http:
+  method: POST
+  url: "{{baseUrl}}/categories"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Coffee"
+      }
+  auth:
+    type: bearer
+    token: "{{token}}"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 201 Response
+    description: Category created successfully.
+    request:
+      url: "{{baseUrl}}/categories"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": ""
+          }
+    response:
+      status: 201
+      statusText: Created
+      headers:
+        - name: Content-Type
+          value: application/json
+      body:
+        type: json
+        data: |-
+          {
+            "id": "",
+            "name": ""
+          }
+  - name: 400 Response
+    description: Request payload is missing or invalid.
+    request:
+      url: "{{baseUrl}}/categories"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": ""
+          }
+    response:
+      status: 400
+      statusText: Bad Request
+      body:
+        type: text
+        data: ""
+  - name: 401 Response
+    description: Unauthorized.
+    request:
+      url: "{{baseUrl}}/categories"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": ""
+          }
+    response:
+      status: 401
+      statusText: Unauthorized
+      body:
+        type: text
+        data: ""
+  - name: 500 Response
+    description: Internal server error.
+    request:
+      url: "{{baseUrl}}/categories"
+      method: POST
+      body:
+        type: json
+        data: |-
+          {
+            "name": ""
+          }
+    response:
+      status: 500
+      statusText: Internal Server Error
+      body:
+        type: text
+        data: ""
+
+docs: Creates a new product category.
