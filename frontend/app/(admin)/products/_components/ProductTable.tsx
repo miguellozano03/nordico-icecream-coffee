@@ -26,21 +26,13 @@ function TableRowItem({
 
   return (
     <TableRow className="group align-top">
-      <TableCell className="font-medium whitespace-normal break-words">
-        {category.name}
-      </TableCell>
+      <TableCell className="font-medium whitespace-normal break-words">{category.name}</TableCell>
 
-      <TableCell className="whitespace-normal break-words font-medium">
-        {title}
-      </TableCell>
+      <TableCell className="whitespace-normal break-words font-medium">{title}</TableCell>
 
-      <TableCell className="whitespace-normal break-words text-mauve-600">
-        {description}
-      </TableCell>
+      <TableCell className="whitespace-normal break-words text-mauve-600">{description}</TableCell>
 
-      <TableCell className="text-right tabular-nums">
-        ${price.toFixed(2)}
-      </TableCell>
+      <TableCell className="text-right tabular-nums">${price.toFixed(2)}</TableCell>
 
       <TableCell className="text-right">
         <button
@@ -50,11 +42,7 @@ function TableRowItem({
           onClick={() => onDelete(id)}
           className="inline-flex items-center justify-center rounded-md p-1.5 text-mauve-400 opacity-90 transition-all group-hover:opacity-100 hover:bg-red-100 hover:text-red-600 cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
         >
-          {isDeleting ? (
-            <Loader2 size={20} className="animate-spin" />
-          ) : (
-            <Trash2 size={20} />
-          )}
+          {isDeleting ? <Loader2 size={20} className="animate-spin" /> : <Trash2 size={20} />}
         </button>
       </TableCell>
 
@@ -90,9 +78,7 @@ function ProductCard({
           <p className="text-xs font-semibold uppercase tracking-wide text-mauve-400">
             {categoryId}
           </p>
-          <h3 className="mt-0.5 font-medium text-mauve-900 break-words">
-            {title}
-          </h3>
+          <h3 className="mt-0.5 font-medium text-mauve-900 break-words">{title}</h3>
         </div>
 
         <div className="flex shrink-0 items-center gap-1">
@@ -103,11 +89,7 @@ function ProductCard({
             onClick={() => onDelete(id)}
             className="inline-flex items-center justify-center rounded-md p-1.5 text-mauve-400 hover:bg-red-100 hover:text-red-600 cursor-pointer disabled:opacity-40 disabled:pointer-events-none"
           >
-            {isDeleting ? (
-              <Loader2 size={18} className="animate-spin" />
-            ) : (
-              <Trash2 size={18} />
-            )}
+            {isDeleting ? <Loader2 size={18} className="animate-spin" /> : <Trash2 size={18} />}
           </button>
 
           <Link
@@ -149,9 +131,7 @@ export default function ProductTable() {
 
   if (isError) {
     return (
-      <p className="text-sm text-red-600">
-        No se pudieron cargar los productos. Intenta de nuevo.
-      </p>
+      <p className="text-sm text-red-600">No se pudieron cargar los productos. Intenta de nuevo.</p>
     );
   }
 
@@ -168,9 +148,7 @@ export default function ProductTable() {
             key={product.id}
             product={product}
             onDelete={handleDelete}
-            isDeleting={
-              deleteProduct.isPending && deleteProduct.variables === product.id
-            }
+            isDeleting={deleteProduct.isPending && deleteProduct.variables === product.id}
           />
         ))}
       </div>
@@ -180,15 +158,9 @@ export default function ProductTable() {
         <Table>
           <TableHeader>
             <TableRow className="bg-mauve-700 hover:bg-mauve-700">
-              <TableHead className="w-[140px] text-mauve-50 font-bold text-sm">
-                Category
-              </TableHead>
-              <TableHead className="w-[200px] text-mauve-50 font-bold text-sm">
-                Item
-              </TableHead>
-              <TableHead className="text-mauve-50 font-bold text-sm">
-                Description
-              </TableHead>
+              <TableHead className="w-[140px] text-mauve-50 font-bold text-sm">Category</TableHead>
+              <TableHead className="w-[200px] text-mauve-50 font-bold text-sm">Item</TableHead>
+              <TableHead className="text-mauve-50 font-bold text-sm">Description</TableHead>
               <TableHead className="w-[110px] text-right text-mauve-50 font-bold text-sm">
                 Price
               </TableHead>
@@ -202,10 +174,7 @@ export default function ProductTable() {
                 key={product.id}
                 product={product}
                 onDelete={handleDelete}
-                isDeleting={
-                  deleteProduct.isPending &&
-                  deleteProduct.variables === product.id
-                }
+                isDeleting={deleteProduct.isPending && deleteProduct.variables === product.id}
               />
             ))}
           </TableBody>

@@ -9,18 +9,16 @@ export interface CategoryCreate {
 
 export type CategoryUpdate = Partial<CategoryCreate>;
 
-// Lo que devuelve el backend en GET /products
 export interface Product {
   id: string;
   categoryId: string;
-  category: Category; // objeto anidado, no string
+  category: Category;
   image?: string;
   title: string;
   description: string;
-  price: number; // el backend puede mandarlo como string (numeric/decimal) -> normalizar al leer
+  price: number;
 }
 
-// Lo que el backend espera al crear/actualizar: categoryId, no category
 export interface ProductCreate {
   categoryId: string;
   title: string;

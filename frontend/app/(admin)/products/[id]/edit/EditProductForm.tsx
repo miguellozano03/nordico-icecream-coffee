@@ -33,7 +33,7 @@ export default function EditProductForm({ productId }: { productId: string }) {
       price: String(product.price),
     });
 
-    setPreview(product.imageUrl); // ajusta el nombre del campo si tu Product usa otro
+    setPreview(product.image); // ajusta el nombre del campo si tu Product usa otro
   }, [product]);
 
   function handleChange(
@@ -85,11 +85,7 @@ export default function EditProductForm({ productId }: { productId: string }) {
   }
 
   if (isError || !product) {
-    return (
-      <p className="text-sm text-red-600">
-        No se pudo cargar el producto. Intenta de nuevo.
-      </p>
-    );
+    return <p className="text-sm text-red-600">No se pudo cargar el producto. Intenta de nuevo.</p>;
   }
 
   return (
@@ -102,9 +98,7 @@ export default function EditProductForm({ productId }: { productId: string }) {
         <div className="space-y-6">
           <div className="grid gap-6 md:grid-cols-2">
             <div>
-              <label className="mb-2 block font-medium text-stone-700">
-                Category
-              </label>
+              <label className="mb-2 block font-medium text-stone-700">Category</label>
 
               <select
                 name="categoryId"
@@ -114,9 +108,7 @@ export default function EditProductForm({ productId }: { productId: string }) {
                 className="w-full rounded-lg border border-stone-300 bg-white px-4 py-3 outline-none transition focus:border-taupe-600 disabled:opacity-60"
               >
                 <option value="" disabled>
-                  {isLoadingCategories
-                    ? "Cargando categorías..."
-                    : "Selecciona una categoría"}
+                  {isLoadingCategories ? "Cargando categorías..." : "Selecciona una categoría"}
                 </option>
 
                 {categories?.map((category) => (
@@ -128,9 +120,7 @@ export default function EditProductForm({ productId }: { productId: string }) {
             </div>
 
             <div>
-              <label className="mb-2 block font-medium text-stone-700">
-                Price
-              </label>
+              <label className="mb-2 block font-medium text-stone-700">Price</label>
 
               <input
                 type="number"
@@ -147,9 +137,7 @@ export default function EditProductForm({ productId }: { productId: string }) {
           </div>
 
           <div>
-            <label className="mb-2 block font-medium text-stone-700">
-              Product name
-            </label>
+            <label className="mb-2 block font-medium text-stone-700">Product name</label>
 
             <input
               name="title"
@@ -162,9 +150,7 @@ export default function EditProductForm({ productId }: { productId: string }) {
           </div>
 
           <div>
-            <label className="mb-2 block font-medium text-stone-700">
-              Description
-            </label>
+            <label className="mb-2 block font-medium text-stone-700">Description</label>
 
             <textarea
               rows={7}
@@ -188,17 +174,11 @@ export default function EditProductForm({ productId }: { productId: string }) {
 
         {/* Image */}
         <div className="flex flex-col">
-          <label className="mb-2 font-medium text-stone-700">
-            Product image
-          </label>
+          <label className="mb-2 font-medium text-stone-700">Product image</label>
 
           <label className="flex h-80 cursor-pointer items-center justify-center overflow-hidden rounded-xl border-2 border-dashed border-stone-300 bg-stone-100 transition hover:border-taupe-600 hover:bg-stone-50">
             {preview ? (
-              <img
-                src={preview}
-                alt="Preview"
-                className="h-full w-full object-cover"
-              />
+              <img src={preview} alt="Preview" className="h-full w-full object-cover" />
             ) : (
               <div className="text-center text-stone-500">
                 <p className="text-lg font-semibold">Click to upload</p>
