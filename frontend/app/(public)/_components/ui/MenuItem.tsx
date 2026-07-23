@@ -4,7 +4,7 @@ interface MenuItemProps {
   image?: string;
   title: string;
   description: string;
-  price: number;
+  price?: number;
 }
 
 export function MenuItem({ image, title, description, price }: MenuItemProps) {
@@ -22,7 +22,9 @@ export function MenuItem({ image, title, description, price }: MenuItemProps) {
       <div className="p-4">
         <h3 className="font-semibold text-slate-800">{title}</h3>
         <p className="text-sm text-slate-500 mt-1">{description}</p>
-        <p className="mt-2 font-medium text-slate-800">${Number(price).toFixed(2)}</p>
+        {price !== undefined && (
+          <p className="mt-2 font-medium text-slate-800">${Number(price).toFixed(2)}</p>
+        )}
       </div>
     </div>
   );
